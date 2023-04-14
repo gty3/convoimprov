@@ -9,7 +9,7 @@ export default function ApproachPage() {
 
   const initiateChat = async () => {
     setPageState("chat")
-    const initRes = await fetch("/initChat")
+    const initRes = await fetch("/api/initChat")
     console.log("initRes,", initRes)
   }
 

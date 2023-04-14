@@ -1,9 +1,9 @@
-import { ApiHandler } from "sst/node/api"
 import { SES } from "aws-sdk"
+import { NextApiRequest, NextApiResponse } from "next"
 
 const ses = new SES()
 
-export const handler = ApiHandler(async (_evt) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse){
   if (!process.env.STAGE) { 
     console.log("no stage ENV")
     return { body: "no stage env" }
@@ -38,4 +38,4 @@ export const handler = ApiHandler(async (_evt) => {
   }
 
   //return chatroom details
-})
+}

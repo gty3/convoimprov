@@ -36,7 +36,7 @@ export default function Chat({ username }: { username: string }) {
     if (!messageRef.current) return
     setSenderMessage(messageRef.current.value)
     try {
-      await fetch("/message", {
+      await fetch("/api/message", {
         method: "POST",
         body: JSON.stringify({
           message: messageRef.current.value,
