@@ -1,15 +1,11 @@
 import { SES } from "aws-sdk"
-import { NextApiRequest, NextApiResponse } from "next"
-
+import { NextResponse } from "next/server"
 const ses = new SES()
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export async function GET(request: Request) {
   if (!process.env.STAGE) {
     console.log("no stage ENV")
-    res.status(500).json({ body: "no stage env" })
+    return NextResponse.json({ body: "no stage env" })
   }
   console.log("initChat Hit, evtbody")
 
@@ -32,10 +28,7 @@ export default async function handler(
     }
   } catch (err) {
     console.log("email Error:::::", err)
-    res.status(500).json({ body: "email error" })
+    return NextResponse.json({ body: "error sending email" })
   }
-  res.status(200).json({ body: `success+ ${process.env.STAGE}` })
-
-  //return chatroom details
+  return NextResponse.json(`success+ ${process.env.STAGE}`)
 }
-

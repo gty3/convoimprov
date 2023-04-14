@@ -82,7 +82,7 @@ export default function Chat({ username }: { username: string }) {
     return () => {
       pusher.unsubscribe(channel)
     }
-  }, [])
+  }, [username])
 
   return (
     <>
