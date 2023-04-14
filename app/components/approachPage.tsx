@@ -8,8 +8,6 @@ export default function ApproachPage() {
   const [pageState, setPageState] = useState("approach")
 
   const initiateChat = async () => {
-    const test = await fetch('/api/hello')
-    console.log(test)
     setPageState("chat")
     const initRes = await fetch("/api/initChat")
     console.log("initRes,", initRes)
