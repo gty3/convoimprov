@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Chat from "./chat"
 import Image from "next/image"
 
@@ -8,6 +8,8 @@ export default function ApproachPage() {
   const [pageState, setPageState] = useState("approach")
 
   const initiateChat = async () => {
+    const test = await fetch('/api/route')
+    console.log(test)
     setPageState("chat")
     const initRes = await fetch("/api/initChat")
     console.log("initRes,", initRes)
@@ -33,6 +35,19 @@ export default function ApproachPage() {
       </div>
     )
   }
+
+  useEffect(() => {
+    fetch('/api/route')
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+    })
+    fetch('/api/hello/route')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+      })
+  }, [])
 
   return (
     <div>

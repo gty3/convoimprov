@@ -3,10 +3,13 @@ import { NextApiRequest, NextApiResponse } from "next"
 
 const ses = new SES()
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse){
-  if (!process.env.STAGE) { 
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (!process.env.STAGE) {
     console.log("no stage ENV")
-    return { body: "no stage env" }
+    res.status(500).json({ body: "no stage env" })
   }
   console.log("initChat Hit, evtbody")
 
@@ -29,13 +32,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   } catch (err) {
     console.log("email Error:::::", err)
-    return {
-      body: "error sending email"
-    }
+    res.status(500).json({ body: "email error" })
   }
-  return {
-    body: `success+ ${process.env.STAGE}`,
-  }
+  res.status(200).json({ body: `success+ ${process.env.STAGE}` })
 
   //return chatroom details
 }
+
