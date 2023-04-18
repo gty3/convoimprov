@@ -5,8 +5,9 @@ import { SyntheticEvent, useEffect, useRef, useState } from "react"
 import Pusher from "pusher-js"
 // import Image from "next/image"
 import debounce from "debounce"
+import Image from "next/image"
 
-export default function Chat({ username }: { username: string }) {
+export default function ChatComponent({ username }: { username: string }) {
   const [senderMessage, setSenderMessage] = useState("")
   const [receiverMessage, setReceiverMessage] = useState("")
   // const [isTyping, setIsTyping] = useState(false)
@@ -24,6 +25,7 @@ export default function Chat({ username }: { username: string }) {
       >
         <textarea
           autoFocus
+          rows={4}
           className="px-1 border border-black w-80"
           onChange={(e) => handleTextChange(e)}
           ref={messageRef}
@@ -89,7 +91,17 @@ export default function Chat({ username }: { username: string }) {
       <Head>
         <script src="https://js.pusher.com/7.2/pusher.min.js" async></script>
       </Head>
-      <div className="flex justify-center">
+      <div className="justify-center h-screen">
+        <div className="flex justify-center pt-10">
+        <Image
+          src=""
+          width={340}
+          height={340}
+          alt="guy eating at cafe"
+          className="flex items-center justify-center border border-black"
+        />
+        </div>
+
         <div className="m-1 bg-gray-100">{senderMessage}</div>
         <div className="m-1">{receiverMessage}</div>
         <ChatInput />

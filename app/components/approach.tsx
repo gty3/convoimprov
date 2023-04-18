@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Chat from "./chat"
+import Chat from "./chatComponent"
 import Image from "next/image"
 
 export default function ApproachPage() {
@@ -16,7 +16,7 @@ export default function ApproachPage() {
   const ProceedButton = () => {
     return (
       <div
-        onClick={() => initiateChat()}
+        // onClick={() => initiateChat()}
         className="flex justify-center py-3 m-2 font-bold text-white rounded-lg cursor-pointer bg-slate-800"
       >
         Approach
@@ -24,21 +24,21 @@ export default function ApproachPage() {
     )
   }
 
-  const Loading = () => {
-    return (
-      <div className="flex justify-center">
-        <div className="flex justify-center py-3 m-2 font-bold text-white rounded-lg">
-          Loading...
-        </div>
-      </div>
-    )
-  }
+  // const Loading = () => {
+  //   return (
+  //     <div className="flex justify-center">
+  //       <div className="flex justify-center py-3 m-2 font-bold text-white rounded-lg">
+  //         Loading...
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div>
       <div className="flex justify-center ">
         <Image
-          src=""
+          src="/cafe_eating.jpg"
           width={340}
           height={340}
           alt="guy eating at cafe"
@@ -59,7 +59,7 @@ export default function ApproachPage() {
           </div>
         </div>
       )}
-      {pageState === "loading" && <Loading />}
+      {/* {pageState === "loading" && <Loading />} */}
       {pageState === "chat" && <Chat username="client" />}
     </div>
   )
