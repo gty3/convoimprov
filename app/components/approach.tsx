@@ -36,7 +36,7 @@ export default function ApproachPage() {
 
   return (
     <div>
-      <div className="flex justify-center mt-20">
+      <div className="flex justify-center ">
         <Image
           src=""
           width={340}
@@ -49,13 +49,7 @@ export default function ApproachPage() {
         <div className="">
           <div className="flex justify-center">
             <div className="max-w-3xl m-2 mt-4">
-              {`I am sitting here eating food. Do I want to talk with you? Maybe.
-              Do I want to be your friend? I don't know. I might be in a good
-              mood. I might be in a bad mood. If you make me uncomfortable, I
-              might just ignore you or leave the conversation entirely. Just
-              like talking, you cannot erase what you say. I will see your text
-              any time you pause. Say weird things.
-              You can approach me as many times as you'd like.`}
+              {`Approach as many times as you'd like.`}
             </div>
           </div>
           <div className="flex justify-center">
