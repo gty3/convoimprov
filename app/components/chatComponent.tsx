@@ -84,6 +84,7 @@ export default function ChatComponent({ username }: { username: string }) {
           setReceiverMessage(data.message)
         }
       })
+      
     }
     // pusherChannel.bind("user_typing", function (data: any) {
     //   if (data.username !== username) {
@@ -99,9 +100,9 @@ export default function ChatComponent({ username }: { username: string }) {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <script src="https://js.pusher.com/7.2/pusher.min.js" async></script>
-      </Head>
+      </Head> */}
       <div className="flex justify-center h-screen">
         <div className="w-96">
           <div className="flex justify-center pt-10">
