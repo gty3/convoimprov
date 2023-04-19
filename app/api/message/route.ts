@@ -23,8 +23,9 @@ export async function POST(request: Request) {
     // pusher.terminateUserConnections("admin")
     pusher
       .trigger("channel1", "message", { message: message, username: username })
+      .then(() => console.log('in pusher THEN', message))
       .catch((error: any) => console.log("error", error))
-    console.log('pusher hit in message?????')
+    console.log('after pusher then/catch pusher hit in message?????', message)
     return NextResponse.json({ body: "message sent" })
   } catch (err) {
     console.log(err)

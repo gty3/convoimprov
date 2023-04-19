@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     .trigger("channel1", "adminConnected", { username: username })
     .catch((error: any) => console.log("error", error))
     console.log('pusher hit in admin?????')
-    return NextResponse.json({ body: "message sent" })
+    return NextResponse.json({ body: "admin connected" })
   } catch (err) {
     console.log(err)
     return NextResponse.json({ body: "error" })
