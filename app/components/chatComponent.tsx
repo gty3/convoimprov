@@ -58,6 +58,7 @@ export default function ChatComponent({ username }: { username: string }) {
   }
 
   useEffect(() => {
+    console.log('initial use effect')
     if (
       !process.env.NEXT_PUBLIC_PUSHER_KEY ||
       !process.env.NEXT_PUBLIC_PUSHER_CLUSTER
@@ -75,6 +76,7 @@ export default function ChatComponent({ username }: { username: string }) {
   }, [])
 
   useEffect(() => {
+    console.log('useEffect dependent on pusher')
     if (pusherChannel) {
       pusherChannel.bind("message", (data: any) => {
         console.log("data::::::", data)

@@ -12,6 +12,7 @@ export default function ChatPage() {
   const username = "client"
 
   useEffect(() => {
+    console.log('initial use effect, before async')
     ;(async () => {
       //api call init
       const initRes = await fetch("/api/initChat")
@@ -23,6 +24,7 @@ export default function ChatPage() {
     ) {
       throw new Error()
     }
+    console.log('initial use effect after async')
     const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
       cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
     })
@@ -34,6 +36,7 @@ export default function ChatPage() {
   }, [])
 
   useEffect(() => {
+    console.log('use effect dependent on pusher', pusherChannel)
     if (pusherChannel) {
       pusherChannel.bind("adminConnected", () => {
         console.log("admin connected pusher BIND hit")
