@@ -24,21 +24,21 @@ export default function ChatPage() {
       }
     })()
 
-    if (
-      !process.env.NEXT_PUBLIC_PUSHER_KEY ||
-      !process.env.NEXT_PUBLIC_PUSHER_CLUSTER
-    ) {
-      throw new Error()
-    }
-    const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
-      cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
-    })
+    // if (
+    //   !process.env.NEXT_PUBLIC_PUSHER_KEY ||
+    //   !process.env.NEXT_PUBLIC_PUSHER_CLUSTER
+    // ) {
+    //   throw new Error()
+    // }
+    // const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
+    //   cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
+    // })
 
-    const pusherChannel = pusher.subscribe(channel)
+    // const pusherChannel = pusher.subscribe(channel)
 
-    pusherChannel.bind("adminConnected", () => {
-      setUserState(false)
-    })
+    // pusherChannel.bind("adminConnected", () => {
+    //   setUserState(false)
+    // })
   })
   return userState ? <Chat username="admin" /> : <div className="h-screen">user disconnected</div>
 }
