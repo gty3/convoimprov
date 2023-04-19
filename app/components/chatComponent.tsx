@@ -57,6 +57,7 @@ export default function ChatComponent({ username }: { username: string }) {
   }
 
   useEffect(() => {
+    console.log('use effect triggered, thus new pusher')
     const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY ?? "", {
       cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER ?? "",
     })
@@ -82,9 +83,10 @@ export default function ChatComponent({ username }: { username: string }) {
     // })
 
     return () => {
+      console.log('unsubscribe is called')
       pusher.unsubscribe(channel)
     }
-  }, [username])
+  }, [])
 
   return (
     <>
@@ -93,17 +95,22 @@ export default function ChatComponent({ username }: { username: string }) {
       </Head>
       <div className="justify-center h-screen">
         <div className="flex justify-center pt-10">
-        <Image
-          src=""
-          width={340}
-          height={340}
-          alt="guy eating at cafe"
-          className="flex items-center justify-center border border-black"
-        />
+          <Image
+            src=""
+            width={340}
+            height={340}
+            alt="guy eating at cafe"
+            className="flex items-center justify-center border border-black"
+          />
         </div>
-
-        <div className="m-1 bg-gray-100">{senderMessage}</div>
-        <div className="m-1">{receiverMessage}</div>
+        <div className="grid grid-cols-2 grid-rows-2 row-start-2">
+          <div className="col-start-2 row-start-2 m-1 mr-3 bg-gray-100 border border-blue-700 ">
+            {senderMessage}
+          </div>
+          <div className="grid m-1 ml-3 border border-black marker:col-span-1">
+            {receiverMessage}
+          </div>
+        </div>
         <ChatInput />
       </div>
     </>

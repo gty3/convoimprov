@@ -1,11 +1,18 @@
 import { NextResponse } from "next/server"
-
-var Pusher = require("pusher")
+import * as Pusher from "pusher"
 
 export async function POST(request: Request) {
   console.log("Message Hit, evtbody,")
   if (!request.body) {
     return NextResponse.json({ error: "no body" })
+  }
+  if (
+    !process.env.PUSHER_APP_ID ||
+    !process.env.PUSHER_SECRET ||
+    !process.env.NEXT_PUBLIC_PUSHER_KEY ||
+    !process.env.NEXT_PUBLIC_PUSHER_CLUSTER
+  ) {
+    return NextResponse.json({ error: "no envs" })
   }
 
   try {
@@ -13,16 +20,17 @@ export async function POST(request: Request) {
 
     const { username, channel, message } = body
 
-    var pusher = new Pusher({
+    var pusher = new Pusher.default({
       appId: process.env.PUSHER_APP_ID,
       key: process.env.NEXT_PUBLIC_PUSHER_KEY,
       secret: process.env.PUSHER_SECRET,
       cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
     })
 
-    pusher
-      .trigger("channel1", "message", { message: message, username: username })
-      .catch((error: any) => console.log("error", error))
+    // pusher.terminateUserConnections("client")
+    // pusher.terminateUserConnections("admin")
+    .trigger("channel1", "message", { message: message, username: username })
+    .catch((error: any) => console.log("error", error))
     return NextResponse.json({ body: "message sent" })
   } catch (err) {
     console.log(err)
