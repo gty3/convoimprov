@@ -1,15 +1,19 @@
 "use client"
 
-import Head from "next/head"
-import { SyntheticEvent, useEffect, useRef, useState } from "react"
-import Pusher from "pusher-js"
-// import Image from "next/image"
-import debounce from "debounce"
+import { useEffect, useState } from "react"
 import Chat from "../components/chatComponent"
 
 export default function ChatPage() {
+  const [waitingOnAdmin, setWaitingOnAdmin] = useState(true)
 
-  return (
-    <Chat username="client" />
-  )
+  useEffect(() => {
+    ;(async () => {
+      //api call init
+      const initRes = await fetch("/api/initChat")
+      console.log("initRes,", initRes)
+      // pusher subscribe and wait for connection
+    })()
+  }, [])
+
+  return <>{waitingOnAdmin ? <div>loading</div> : <Chat username="client" />}</>
 }

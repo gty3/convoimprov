@@ -93,7 +93,8 @@ export default function ChatComponent({ username }: { username: string }) {
       <Head>
         <script src="https://js.pusher.com/7.2/pusher.min.js" async></script>
       </Head>
-      <div className="justify-center h-screen">
+      <div className="flex justify-center h-screen">
+        <div className="w-96">
         <div className="flex justify-center pt-10">
           <Image
             src=""
@@ -112,6 +113,7 @@ export default function ChatComponent({ username }: { username: string }) {
           </div>
         </div>
         <ChatInput />
+        </div>
       </div>
     </>
   )

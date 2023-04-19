@@ -1,7 +1,5 @@
-import Image from "next/image"
-import { Inter } from "next/font/google"
-import ApproachPage from "./components/approach"
 import Link from "next/link"
+import ApproachCard from "./components/approachCard"
 
 export default function Home() {
   const EmailButton = () => {
@@ -22,17 +20,7 @@ export default function Home() {
     )
   }
 
-  const ApproachCard = () => {
-    return (
-      <Link
-        href="/chat"
-        className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-      >
-        <h2 className={` text-2xl font-semibold mb-4`}>Start with me </h2>
-        <ApproachPage />
-      </Link>
-    )
-  }
+
   return (
     <main className="flex flex-col items-center min-h-screen p-8">
       <div
