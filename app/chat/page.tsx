@@ -25,9 +25,11 @@ export default function ChatPage() {
       const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
         cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
       })
-
       const channel = pusher.subscribe(channelName)
       setPusherChannel(channel)
+      return () => {
+        pusher.unsubscribe(channelName)
+      }
     })()
   }, [])
 
