@@ -2,17 +2,16 @@
 
 import { useEffect, useState } from "react"
 import Chat from "../components/chatComponent"
-import Pusher from "pusher-js"
+import Pusher, { Channel } from "pusher-js"
 
 export default function ChatPage() {
   const [waitingOnAdmin, setWaitingOnAdmin] = useState(true)
+  const [pusherChannel, setPusherChannel] = useState<Channel>()
 
-  const channel = "channel1"
+  const channelName = "channel1"
   const username = "client"
 
   useEffect(() => {
-
-
     ;(async () => {
       //api call init
       const initRes = await fetch("/api/initChat")
@@ -26,15 +25,20 @@ export default function ChatPage() {
       const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
         cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
       })
-  
-      const pusherChannel = pusher.subscribe(channel)
-  
-      pusherChannel.bind("adminConnected", () => {
-          setWaitingOnAdmin(false)
 
-      })
+      const channel = pusher.subscribe(channelName)
+      setPusherChannel(channel)
     })()
   }, [])
+
+  useEffect(() => {
+    if (pusherChannel) {
+      pusherChannel.bind("adminConnected", () => {
+        console.log("admin connected pusher BIND hit")
+        setWaitingOnAdmin(false)
+      })
+    }
+  }, [pusherChannel])
 
   return (
     <div className="h-screen">

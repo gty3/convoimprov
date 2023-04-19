@@ -2,7 +2,7 @@
 
 import Head from "next/head"
 import { SyntheticEvent, useEffect, useRef, useState } from "react"
-import Pusher from "pusher-js"
+import Pusher, { Channel } from "pusher-js"
 // import Image from "next/image"
 import debounce from "debounce"
 import Image from "next/image"
@@ -10,12 +10,13 @@ import Image from "next/image"
 export default function ChatComponent({ username }: { username: string }) {
   const [senderMessage, setSenderMessage] = useState("")
   const [receiverMessage, setReceiverMessage] = useState("")
+  const [pusherChannel, setPusherChannel] = useState<Channel>()
   // const [isTyping, setIsTyping] = useState(false)
   // const [messageTyped, setMessageTyped] = useState(false)
 
   const messageRef = useRef<HTMLTextAreaElement>(null)
 
-  const channel = "channel1"
+  const channelName = "channel1"
 
   const ChatInput = () => {
     return (
@@ -43,7 +44,7 @@ export default function ChatComponent({ username }: { username: string }) {
         body: JSON.stringify({
           message: messageRef.current.value,
           username: username,
-          channel: channel,
+          channel: channelName,
         }),
       })
     } catch (err) {
@@ -66,16 +67,22 @@ export default function ChatComponent({ username }: { username: string }) {
     const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
       cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
     })
+    const channel = pusher.subscribe(channelName)
+    setPusherChannel(channel)
+    return () => {
+      pusher.unsubscribe(channelName)
+    }
+  }, [])
 
-    const pusherChannel = pusher.subscribe(channel)
-
-    pusherChannel.bind("message", (data: any) => {
-      console.log("data::::::", data)
-      if (data.username !== username) {
-        setReceiverMessage(data.message)
-      }
-    })
-
+  useEffect(() => {
+    if (pusherChannel) {
+      pusherChannel.bind("message", (data: any) => {
+        console.log("data::::::", data)
+        if (data.username !== username) {
+          setReceiverMessage(data.message)
+        }
+      })
+    }
     // pusherChannel.bind("user_typing", function (data: any) {
     //   if (data.username !== username) {
     //     var typingText = data.username + " is typing..."
@@ -86,11 +93,7 @@ export default function ChatComponent({ username }: { username: string }) {
     //     }, clearInterval1)
     //   }
     // })
-
-    return () => {
-      pusher.unsubscribe(channel)
-    }
-  }, [])
+  }, [pusherChannel])
 
   return (
     <>
