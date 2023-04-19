@@ -37,6 +37,7 @@ export default function ChatPage() {
 
   useEffect(() => {
     console.log('use effect dependent on pusher', pusherChannel)
+    setWaitingOnAdmin(false)
     if (pusherChannel) {
       pusherChannel.bind("adminConnected", () => {
         console.log("admin connected pusher BIND hit")
