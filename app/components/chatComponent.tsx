@@ -2,7 +2,7 @@
 
 import Head from "next/head"
 import { SyntheticEvent, useEffect, useRef, useState } from "react"
-import Pusher, { Channel } from "pusher-js"
+import { Channel } from "pusher-js"
 // import Image from "next/image"
 import debounce from "debounce"
 import Image from "next/image"
@@ -100,9 +100,9 @@ export default function ChatComponent({ username }: { username: string }) {
 
   return (
     <>
-      {/* <Head>
-        <script src="https://js.pusher.com/7.2/pusher.min.js" async></script>
-      </Head> */}
+      <Head>
+        <script src="https://js.pusher.com/8.0.2/pusher.min.js" async></script>
+      </Head>
       <div className="flex justify-center h-screen">
         <div className="w-96">
           <div className="flex justify-center pt-10">

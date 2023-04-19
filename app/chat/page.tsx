@@ -8,7 +8,7 @@ export default function ChatPage() {
   const [waitingOnAdmin, setWaitingOnAdmin] = useState(true)
   const [pusherChannel, setPusherChannel] = useState<Channel>()
 
-  const channelName = "presence-channel1"
+  const channelName = "channel1"
   const username = "client"
 
   useEffect(() => {
