@@ -16,21 +16,21 @@ export default function ChatPage() {
       //api call init
       const initRes = await fetch("/api/initChat")
       console.log("initRes,", initRes)
-      if (
-        !process.env.NEXT_PUBLIC_PUSHER_KEY ||
-        !process.env.NEXT_PUBLIC_PUSHER_CLUSTER
-      ) {
-        throw new Error()
-      }
-      const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
-        cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
-      })
-      const channel = pusher.subscribe(channelName)
-      setPusherChannel(channel)
-      return () => {
-        pusher.unsubscribe(channelName)
-      }
     })()
+    if (
+      !process.env.NEXT_PUBLIC_PUSHER_KEY ||
+      !process.env.NEXT_PUBLIC_PUSHER_CLUSTER
+    ) {
+      throw new Error()
+    }
+    const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY, {
+      cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
+    })
+    const channel = pusher.subscribe(channelName)
+    setPusherChannel(channel)
+    return () => {
+      pusher.unsubscribe(channelName)
+    }
   }, [])
 
   useEffect(() => {

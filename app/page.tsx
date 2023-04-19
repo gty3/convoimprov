@@ -1,5 +1,7 @@
+"use client"
 import Link from "next/link"
 import ApproachCard from "./components/approachCard"
+import { useEffect } from "react"
 
 export default function Home() {
   const EmailButton = () => {
@@ -19,6 +21,10 @@ export default function Home() {
       </Link>
     )
   }
+  
+  useEffect(() => {
+    console.log('HELLO, use effect11111')
+  }, [])
 
 
   return (
