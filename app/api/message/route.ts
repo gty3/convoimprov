@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import * as Pusher from "pusher"
 
-export const pusher = new Pusher.default({
+const pusher = new Pusher.default({
   appId: process.env.PUSHER_APP_ID ?? "",
   key: process.env.NEXT_PUBLIC_PUSHER_KEY ?? "",
   secret: process.env.PUSHER_SECRET ?? "",
@@ -24,6 +24,7 @@ export async function POST(request: Request) {
     pusher
       .trigger("channel1", "message", { message: message, username: username })
       .catch((error: any) => console.log("error", error))
+    console.log('pusher hit in message?????')
     return NextResponse.json({ body: "message sent" })
   } catch (err) {
     console.log(err)
