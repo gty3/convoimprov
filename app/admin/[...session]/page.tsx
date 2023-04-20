@@ -1,10 +1,17 @@
 "use client"
 
+import ChatComponent from "@/app/components/chatComponent"
 import { useEffect, useState } from "react"
-import Chat from "../components/chatComponent"
-import Pusher from "pusher-js"
+// import Chat from "../components/chatComponent"
+// import Pusher from "pusher-js"
 
-export default function ChatPage() {
+export default function AdminPage({
+  params,
+}: {
+  params: { session: string[] }
+}) {
+  console.log(params.session[0])
+
   const [userState, setUserState] = useState(true)
 
   const channel = "channel1"
@@ -23,7 +30,6 @@ export default function ChatPage() {
         console.log("shit errored")
       }
     })()
-
     // if (
     //   !process.env.NEXT_PUBLIC_PUSHER_KEY ||
     //   !process.env.NEXT_PUBLIC_PUSHER_CLUSTER
@@ -39,6 +45,14 @@ export default function ChatPage() {
     // pusherChannel.bind("adminConnected", () => {
     //   setUserState(false)
     // })
-  })
-  return userState ? <Chat username="admin" /> : <div className="h-screen">user disconnected</div>
+  }, [])
+
+
+  return (
+    <div className="h-screen">
+      hello
+      {/* <ChatComponent username="admin" /> */}
+    </div>
+  )
+  // return userState ? <Chat username="admin" /> : <div className="h-screen">user disconnected</div>
 }
