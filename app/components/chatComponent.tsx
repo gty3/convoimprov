@@ -45,7 +45,7 @@ export default function ChatComponent({
       { type: "signal", data: "" + messageRef.current.value },
       function signalCallback(err) {
         if (err) {
-          console.log(err)
+          console.log("signal-error", err)
         }
       }
     )
@@ -67,7 +67,7 @@ export default function ChatComponent({
     if (!session) return
     session.connect(token, function (err) {
       if (err) {
-        console.log(err)
+        console.log("session-connect-error:::", err)
       }
     })
     session.on("connectionCreated", (event) => {
