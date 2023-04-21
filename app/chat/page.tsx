@@ -1,4 +1,4 @@
-import Client from "./client"
+import ChatComponent from "../components/chatComponent"
 import { SES } from "aws-sdk"
 import OpenTok from "opentok"
 
@@ -28,7 +28,7 @@ export default async function ChatPage() {
   return (
     <>
       <div className="h-screen">
-        <Client sessionId={sessionId} token={token} />
+        <ChatComponent sessionId={sessionId} token={token} />
       </div>
     </>
   )

@@ -1,5 +1,5 @@
+import ChatComponent from "@/app/components/chatComponent"
 import OpenTok from "opentok"
-import Client from "./client"
 
 export default function AdminPage({ params }: { params: { session: string } }) {
   const opentok = new OpenTok(
@@ -10,7 +10,7 @@ export default function AdminPage({ params }: { params: { session: string } }) {
 
   return (
     <div className="h-screen">
-      <Client sessionId={params.session} token={token} />
+      <ChatComponent sessionId={params.session} token={token} />
     </div>
   )
   // return userState ? <Chat username="admin" /> : <div className="h-screen">user disconnected</div>
