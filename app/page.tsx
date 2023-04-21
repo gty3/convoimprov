@@ -1,6 +1,6 @@
 
 import Link from "next/link"
-import ApproachCard from "./components/approachCard"
+import ApproachCard from "./approachCard"
 
 export default function Home() {
   const EmailButton = () => {

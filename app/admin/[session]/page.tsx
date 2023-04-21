@@ -13,5 +13,4 @@ export default function AdminPage({ params }: { params: { session: string } }) {
       <ChatComponent sessionId={params.session} token={token} />
     </div>
   )
-  // return userState ? <Chat username="admin" /> : <div className="h-screen">user disconnected</div>
 }

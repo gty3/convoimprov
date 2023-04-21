@@ -12,6 +12,7 @@ export default function ChatComponent({
   sessionId: string
   token: string
 }) {
+
   console.log("ChatCompRendered-SessionId::", sessionId)
   const [adminConnected, setAdminConnected] = useState(false)
 
