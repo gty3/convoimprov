@@ -4,8 +4,8 @@ import OpenTok from "opentok"
 
 const ses = new SES()
 const opentok = new OpenTok(
-  "46811014",
-  "a08e3091383c15b49286a7710fc37458b67fc869"
+  process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
+  "da4b70c543ffb95e58d23d34d0d591ff1aa63ee3" //process.env was undefined here???
 )
 
 export async function GET() {
@@ -26,10 +26,12 @@ export async function GET() {
       })
     })
   }
+  
   const session = await createSession()
   const userToken = opentok.generateToken(session.sessionId)
   const adminToken = opentok.generateToken(session.sessionId)
-  console.log("adminToken", adminToken)
+  console.log(":::adminToken:::", adminToken)
+  console.log(":::session:::", session.sessionId)
 
   // const emailParams = {
   //   Destination: {
@@ -55,6 +57,5 @@ export async function GET() {
   return NextResponse.json({
     sessionId: session.sessionId,
     token: userToken,
-    apiKey: "46811014",
   })
 }
