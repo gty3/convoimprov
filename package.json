@@ -22,8 +22,6 @@
     "next": "13.3.0",
     "opentok": "^2.16.0",
     "postcss": "8.4.21",
-    "pusher": "^5.1.2",
-    "pusher-js": "^8.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.1",

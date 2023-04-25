@@ -41,7 +41,7 @@ export default function ChatComponent({
     return (
       <div className="flex justify-center lg:hidden lg:mt-20">
       <input
-        // autoFocus
+        autoFocus
         autoComplete="off"
         // rows={4}
         className="px-1 border border-black w-80 dark:text-black"
