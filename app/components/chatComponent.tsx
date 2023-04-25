@@ -99,27 +99,20 @@ export default function ChatComponent({
                   <Image
                     src="/cafe_eating_dark.jpg"
                     fill={true}
-                    // width={340}
-                    // height={340}
                     alt="guy eating at cafe"
                     className="flex items-center justify-center border border-black"
                   />
                   <div className="p-2 z-1 text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
-                  Hey hows it going, this is default tttt text, my name is geoff, lol that always gets a chuckle - my name is geoff. Im sitting here eating
-                   {receivedText}
+                    {/* Hey hows it going, this is default tttt text, my name is geoff, lol that always gets a chuckle - my name is geoff. Im sitting here eating */}
+                    {receivedText}
                   </div>
                 </div>
               </div>
-            <div className="flex justify-center">
-              <div className="p-1.5 py-2 text-lg w-80">
-                {/* <div className="col-start-2 row-start-2 m-1 mr-3 bg-gray-100 border border-blue-700 "> */}
-                  Hi I'm a stranger looking to talk, ttttt this is random default text
+              <div className="flex justify-center">
+                <div className="p-1.5 py-2 text-lg w-80">
+                  {/* Hi I'm a stranger looking to talk, ttttt this is random default text */}
                   {sentText}
-                {/* </div> */}
-                {/* <div className="grid m-1 ml-3 border border-black marker:col-span-1">
-                  
-                </div> */}
-              </div>
+                </div>
               </div>
               <ChatInput />
             </div>
