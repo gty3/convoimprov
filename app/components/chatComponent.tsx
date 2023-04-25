@@ -21,13 +21,13 @@ export default function ChatComponent({
 
   const [session, setSession] = useState<Session>()
 
-  const messageRef = useRef<HTMLTextAreaElement>(null)
+  const messageRef = useRef<any>(null)
 
   const ChatInput = () => {
     return (
-      <div className="flex justify-center lg:mt-20">
+      <div className="justify-center hidden sm:hidden lg:flex lg:mt-20">
         <textarea
-          // autoFocus
+          autoFocus
           autoComplete="off"
           rows={4}
           className="px-1 border border-black w-80 dark:text-black"
@@ -35,6 +35,20 @@ export default function ChatComponent({
           ref={messageRef}
         />
       </div>
+    )
+  }
+  const ChatInputMobile = () => {
+    return (
+      <div className="flex justify-center lg:hidden lg:mt-20">
+      <input
+        // autoFocus
+        autoComplete="off"
+        // rows={4}
+        className="px-1 border border-black w-80 dark:text-black"
+        onChange={(e) => handleTextChange(e)}
+        ref={messageRef}
+      />
+    </div>
     )
   }
 
@@ -116,6 +130,7 @@ export default function ChatComponent({
                 </div>
               </div>
               <ChatInput />
+              <ChatInputMobile />
             </div>
           </div>
         ) : (

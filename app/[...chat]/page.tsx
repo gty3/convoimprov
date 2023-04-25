@@ -1,9 +1,9 @@
 import ChatComponent from "../components/chatComponent"
-import { SES } from "aws-sdk"
+// import { SESClient, CloneReceiptRuleSetCommand } from "@aws-sdk/client-ses"
 import OpenTok from "opentok"
 
 export default async function ChatPage() {
-  const ses = new SES()
+  // const client = new SESClient({ region: "ap-southeast-2" })
   const opentok = new OpenTok(
     process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
     process.env.OPENTOK_SECRET
