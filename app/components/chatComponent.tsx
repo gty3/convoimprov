@@ -4,6 +4,7 @@ import { SyntheticEvent, useEffect, useRef, useState } from "react"
 import OT, { Session } from "@opentok/client"
 import Image from "next/image"
 import { debounce } from "debounce"
+import CustomSpinner from "./spinner"
 
 export default function ChatComponent({
   sessionId,
@@ -12,7 +13,6 @@ export default function ChatComponent({
   sessionId: string
   token: string
 }) {
-
   console.log("ChatCompRendered-SessionId::", sessionId)
   const [adminConnected, setAdminConnected] = useState(false)
 
@@ -91,31 +91,45 @@ export default function ChatComponent({
   return (
     <>
       <div className="h-screen">
-        {adminConnected ? (
+        {!adminConnected ? (
           <div className="flex justify-center h-screen">
             <div className="w-96">
               <div className="flex justify-center pt-10">
-                <Image
-                  src=""
-                  width={340}
-                  height={340}
-                  alt="guy eating at cafe"
-                  className="flex items-center justify-center border border-black"
-                />
+                <div className="relative w-80 h-80">
+                  <Image
+                    src="/cafe_eating.jpg"
+                    fill={true}
+                    // width={340}
+                    // height={340}
+                    alt="guy eating at cafe"
+                    className="flex items-center justify-center border border-black"
+                  />
+                  <div className="p-2 z-1 text-lg absolute bottom-0 text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                  default textdefa {receivedText}
+                  </div>
+                </div>
               </div>
+
               <div className="grid grid-cols-2 grid-rows-2 row-start-2">
                 <div className="col-start-2 row-start-2 m-1 mr-3 bg-gray-100 border border-blue-700 ">
                   {sentText}
                 </div>
-                <div className="grid m-1 ml-3 border border-black marker:col-span-1">
-                  {receivedText}
-                </div>
+                {/* <div className="grid m-1 ml-3 border border-black marker:col-span-1">
+                  
+                </div> */}
               </div>
               <ChatInput />
             </div>
           </div>
         ) : (
-          <div>loading</div>
+          <div className="flex justify-center pt-64">
+            <div className="grid grid-cols">
+              <CustomSpinner className="flex justify-center" />
+              <div className="flex justify-center px-4 pt-6">
+                Connecting. This can take a minute
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </>
