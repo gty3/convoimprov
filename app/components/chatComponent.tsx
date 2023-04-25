@@ -25,16 +25,16 @@ export default function ChatComponent({
 
   const ChatInput = () => {
     return (
-      <form className="flex justify-center lg:mt-20">
+      <div className="flex justify-center lg:mt-20">
         <textarea
-          autoFocus
+          // autoFocus
           autoComplete="off"
           rows={4}
           className="px-1 border border-black w-80 dark:text-black"
           onChange={(e) => handleTextChange(e)}
           ref={messageRef}
         />
-      </form>
+      </div>
     )
   }
 
