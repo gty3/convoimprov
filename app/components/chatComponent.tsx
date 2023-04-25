@@ -104,14 +104,14 @@ export default function ChatComponent({
                     className="flex items-center justify-center border border-black"
                   />
                   <div className="p-2 z-1 text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
-                    Hey hows it going, this is default tttt text, my name is geoff, lol that always gets a chuckle - my name is geoff. Im sitting here eating
+                    {/* Hey hows it going, this is default tttt text, my name is geoff, lol that always gets a chuckle - my name is geoff. Im sitting here eating */}
                     {receivedText}
                   </div>
                 </div>
               </div>
               <div className="flex justify-center">
                 <div className="p-1.5 lg:py-2 text-lg w-80 h-16">
-                  Hi I'm a stranger looking to talk, ttttt this is random default text
+                  {/* Hi I'm a stranger looking to talk, ttttt this is random default text */}
                   {sentText}
                 </div>
               </div>
