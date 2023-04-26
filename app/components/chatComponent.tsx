@@ -26,18 +26,21 @@ export default function ChatComponent({
   const desktopRef = useRef<HTMLTextAreaElement>(null)
 
   const messageDebounced = debounce(async () => {
-    if (!mobileRef.current || !desktopRef.current) return
     if (!session) return
-    const textInput = mobileRef.current.value || desktopRef.current.value
-    sentSentText(textInput)
-    session.signal(
-      { type: "signal", data: "" + textInput },
-      function signalCallback(err) {
-        if (err) {
-          console.log("signal-error", err)
+    if (mobileRef.current || desktopRef.current) {
+      const textInput = mobileRef.current?.value || desktopRef.current?.value
+      sentSentText(textInput)
+      session.signal(
+        { type: "signal", data: "" + textInput },
+        function signalCallback(err) {
+          if (err) {
+            console.log("signal-error", err)
+          }
         }
-      }
-    )
+      )
+    }
+
+
   }, 700)
 
   const handleTextChange = async (e: SyntheticEvent) => {
