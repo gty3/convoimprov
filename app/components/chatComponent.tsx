@@ -157,7 +157,7 @@ export default function ChatComponent({
     )
   }
 
-  return !adminConnected ? (
+  return adminConnected ? (
     <>
       <div className="md:hidden">
         <MobileComponent />
