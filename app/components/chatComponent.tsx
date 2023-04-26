@@ -109,7 +109,7 @@ export default function ChatComponent({
             rows={4}
             className="px-1 border border-black w-80 dark:text-black"
             onChange={(e) => handleTextChange(e)}
-            ref={messageRef}
+            // ref={messageRef}
           />
         </div>
         {/* </div> */}
@@ -120,7 +120,7 @@ export default function ChatComponent({
   const MobileComponent = () => {
     return (
       <div className="h-96 w-96">
-        <div className="absolute inset-x-0 bottom-20 w-96">
+        <div className="absolute inset-x-0 bottom-10 w-96">
           <div className="flex justify-center pt-2">
             <div className="relative w-60 h-60">
               <Image
@@ -143,7 +143,7 @@ export default function ChatComponent({
           </div>
           <div className="flex justify-center">
             <input
-              // autoFocus
+              autoFocus
               autoComplete="off"
               className="px-1 border border-black w-80 dark:text-black"
               onChange={(e) => handleTextChange(e)}
