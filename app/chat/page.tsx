@@ -23,7 +23,7 @@ export default async function ChatPage() {
 
   const session = await createSession()
   const sessionId = session.sessionId
-  if (process.env.NODE_ENV !== "development") {
+  // if (process.env.NODE_ENV !== "development") {
     try {
       await new SESClient({ region: "us-east-1" }).send(
         new SendEmailCommand({
@@ -46,7 +46,7 @@ export default async function ChatPage() {
     } catch (err) {
       console.log('SES-ERR:::', err)
     }
-  }
+  // }
 
   const token = opentok.generateToken(sessionId)
 
