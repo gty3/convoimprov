@@ -25,7 +25,7 @@ export default function ChatComponent({
 
   const ChatInput = () => {
     return (
-      <div className="justify-center hidden sm:hidden lg:flex lg:mt-20">
+      <div className="justify-center hidden sm:hidden md:flex md:mt-20">
         <textarea
           autoFocus
           autoComplete="off"
@@ -39,7 +39,7 @@ export default function ChatComponent({
   }
   const ChatInputMobile = () => {
     return (
-      <div className="absolute bottom-0 flex justify-center lg:hidden">
+      <div className="absolute bottom-0 flex justify-center md:hidden">
       <input
         autoFocus
         autoComplete="off"
@@ -109,8 +109,8 @@ export default function ChatComponent({
         {!adminConnected ? (
           <div className="flex justify-center ">
             <div className="w-96">
-              <div className="flex justify-center pt-2 lg:pt-10">
-                <div className="relative opacity-100 w-80 h-80">
+              <div className="flex justify-center pt-2 md:pt-10">
+                <div className="relative opacity-100 w-60 h-60 md:w-80 md:h-80">
                   <Image
                     src="/cafe_eating_dark.jpg"
                     fill={true}
@@ -124,7 +124,7 @@ export default function ChatComponent({
                 </div>
               </div>
               <div className="flex justify-center">
-                <div className="p-1.5 lg:py-2 text-lg w-80 h-16">
+                <div className="p-1.5 md:py-2 text-lg w-80 h-16">
                   {/* Hi I'm a stranger looking to talk, ttttt this is random default text */}
                   {sentText}
                 </div>
