@@ -41,15 +41,15 @@ export default function ChatComponent({
   const ChatInputMobile = () => {
     return (
       <div className="absolute bottom-0 flex justify-center md:hidden">
-      <input
-        autoFocus
-        autoComplete="off"
-        // rows={4}
-        className="px-1 border border-black w-80 dark:text-black"
-        onChange={(e) => handleTextChange(e)}
-        ref={messageRef}
-      />
-    </div>
+        <input
+          autoFocus
+          autoComplete="off"
+          // rows={4}
+          className="px-1 border border-black w-80 dark:text-black"
+          onChange={(e) => handleTextChange(e)}
+          ref={messageRef}
+        />
+      </div>
     )
   }
 
@@ -72,11 +72,14 @@ export default function ChatComponent({
   }
 
   useEffect(() => {
-    const otSession = OT.initSession(
-      process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
-      sessionId
-    )
-    setSession(otSession)
+    ;(async () => {
+      const OT = (await import("@opentok/client")).default
+      const otSession = OT.initSession(
+        process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
+        sessionId
+      )
+      setSession(otSession)
+    })()
   }, [sessionId])
 
   useEffect(() => {

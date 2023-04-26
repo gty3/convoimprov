@@ -9,8 +9,10 @@ export default function AdminPage({ params }: { params: { session: string } }) {
   const token = opentok.generateToken(params.session)
 
   return (
-    <div className="h-screen">
-      <ChatComponent sessionId={params.session} token={token} />
-    </div>
+    <>
+      <div className="h-screen">
+        <ChatComponent sessionId={params.session} token={token} />
+      </div>
+    </>
   )
 }
