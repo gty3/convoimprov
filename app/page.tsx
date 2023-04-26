@@ -3,8 +3,6 @@ import Link from "next/link"
 import ApproachCard from "./approachCard"
 
 export default function Home() {
-  console.log('hello, does this get logged?')
-  console.log(process.env)
   const EmailButton = () => {
     return (
       <Link
