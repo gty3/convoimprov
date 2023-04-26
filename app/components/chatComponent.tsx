@@ -1,7 +1,8 @@
 "use client"
-
+import dynamic from "next/dynamic"
 import { SyntheticEvent, useEffect, useRef, useState } from "react"
-import OT, { Session } from "@opentok/client"
+import { Session } from "@opentok/client"
+
 import Image from "next/image"
 import { debounce } from "debounce"
 import CustomSpinner from "./spinner"
