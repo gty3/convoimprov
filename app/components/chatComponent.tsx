@@ -107,7 +107,7 @@ export default function ChatComponent({
   return (
     <>
       <div className="h-screen overflow-hidden">
-        {!adminConnected ? (
+        {adminConnected ? (
           <div className="flex justify-center ">
             <div className="w-96">
               <div className="flex justify-center pt-2 md:pt-10">
