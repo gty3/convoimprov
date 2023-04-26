@@ -105,9 +105,9 @@ export default function ChatComponent({
 
   return (
     <>
-      <div className="h-screen">
+      <div className="">
         {!adminConnected ? (
-          <div className="flex justify-center h-screen">
+          <div className="flex justify-center ">
             <div className="w-96">
               <div className="flex justify-center pt-2 lg:pt-10">
                 <div className="relative opacity-100 w-80 h-80">
