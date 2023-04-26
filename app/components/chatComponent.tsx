@@ -22,14 +22,16 @@ export default function ChatComponent({
 
   const [session, setSession] = useState<Session>()
 
-  const messageRef = useRef<any>(null)
+  const mobileRef = useRef<HTMLInputElement>(null)
+  const desktopRef = useRef<HTMLTextAreaElement>(null)
 
   const messageDebounced = debounce(async () => {
-    if (!messageRef.current) return
+    if (!mobileRef.current || !desktopRef.current) return
     if (!session) return
-    sentSentText(messageRef.current.value)
+    const textInput = mobileRef.current.value || desktopRef.current.value
+    sentSentText(textInput)
     session.signal(
-      { type: "signal", data: "" + messageRef.current.value },
+      { type: "signal", data: "" + textInput },
       function signalCallback(err) {
         if (err) {
           console.log("signal-error", err)
@@ -81,9 +83,9 @@ export default function ChatComponent({
   const DesktopComponent = () => {
     return (
       <div className="h-96">
-        {/* <div className="w-96"> */}
-        <div className="absolute flex justify-center pt-2 bottom-20 md:relative md:pt-10">
-          <div className="relative opacity-100 w-80 h-80">
+        <div className="w-96">
+        <div className="flex justify-center pt-10 ">
+          <div className="relative w-80 h-80">
             <Image
               src="/cafe_eating_dark.jpg"
               fill={true}
@@ -97,22 +99,22 @@ export default function ChatComponent({
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="p-1.5 md:py-2 text-lg w-80 h-16">
+          <div className="p-1.5 py-2 text-lg w-80 h-16">
             {/* Hi I'm a stranger looking to talk, ttttt this is random default text */}
             {sentText}
           </div>
         </div>
-        <div className="justify-center hidden sm:hidden md:flex md:mt-20">
+        <div className="flex justify-center mt-20">
           <textarea
             autoFocus
             autoComplete="off"
             rows={4}
             className="px-1 border border-black w-80 dark:text-black"
             onChange={(e) => handleTextChange(e)}
-            // ref={messageRef}
+            ref={desktopRef}
           />
         </div>
-        {/* </div> */}
+        </div>
       </div>
     )
   }
@@ -147,7 +149,7 @@ export default function ChatComponent({
               autoComplete="off"
               className="px-1 border border-black w-80 dark:text-black"
               onChange={(e) => handleTextChange(e)}
-              ref={messageRef}
+              ref={mobileRef}
             />
           </div>
         </div>
@@ -160,9 +162,9 @@ export default function ChatComponent({
       <div className="md:hidden">
         <MobileComponent />
       </div>
-      <div className="hidden md:flex">
+      {/* <div className="hidden md:flex">
         <DesktopComponent />
-      </div>
+      </div> */}
     </>
   ) : (
     <div className="flex justify-center pt-64">
