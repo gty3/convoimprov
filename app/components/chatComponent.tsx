@@ -165,9 +165,9 @@ export default function ChatComponent({
       <div className="md:hidden">
         <MobileComponent />
       </div>
-      {/* <div className="hidden md:flex">
+      <div className="hidden md:flex">
         <DesktopComponent />
-      </div> */}
+      </div>
     </>
   ) : (
     <div className="flex justify-center pt-64">
