@@ -39,7 +39,7 @@ export default function ChatComponent({
   }
   const ChatInputMobile = () => {
     return (
-      <div className="flex justify-center lg:hidden lg:mt-20">
+      <div className="absolute bottom-0 flex justify-center lg:hidden">
       <input
         autoFocus
         autoComplete="off"
