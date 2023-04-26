@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center p-8">
+    <main className="flex flex-col items-center min-h-screen p-8">
       <div
         className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] 
         before:-translate-x-1/2 before:rounded-full 
