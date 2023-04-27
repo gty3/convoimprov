@@ -134,7 +134,7 @@ export default function ChatComponent({
                 alt="guy eating at cafe"
                 className="flex items-center justify-center border border-black"
               />
-              <div className="p-2 z-1 text-lg text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
+              <div className="p-2 z-1 text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
                 {/* Hey hows it going, this is default tttt text, my name is geoff, lol that always gets a chuckle - my name is geoff. Im sitting here eating */}
                 {receivedText}
               </div>
@@ -150,7 +150,7 @@ export default function ChatComponent({
             <input
               autoFocus
               autoComplete="off"
-              className="px-1 border border-black w-80 dark:text-black"
+              className="px-2 py-1 border-2 border-black rounded-lg w-80 dark:text-black"
               onChange={(e) => handleTextChange(e)}
               ref={mobileRef}
             />
@@ -160,7 +160,7 @@ export default function ChatComponent({
     )
   }
 
-  return !adminConnected ? (
+  return adminConnected ? (
     <>
       <div className="md:hidden">
         <MobileComponent />

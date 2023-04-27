@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center p-8 h-screen bg-[url(/grid.svg)]">
+    <main className="flex flex-col items-center p-8 min-h-screen bg-[url(/grid.svg)]">
       <div
         className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] 
         before:-translate-x-1/2 before:rounded-full 
@@ -34,11 +34,11 @@ export default function Home() {
       after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]"
       >
         <div className="relative text-4xl font-semibold lg:mt-20">
-          <div className="text-4xl font-bold">Become a conversationalist</div>
+          <div className="text-5xl font-bold">Know what to say</div>
           <div className="mt-4 text-2xl">Learn what to say by talking with strangers</div>
         </div>
       </div>
-      <div className="grid mt-10 mb-32 text-center cursor-pointer grid-center lg:mb-0 lg:grid-cols-1 lg:text-left">
+      <div className="grid mt-10 mb-32 text-center cursor-pointer grid-center">
         <ApproachCard />
       </div>
       {/* <EmailButton /> */}
