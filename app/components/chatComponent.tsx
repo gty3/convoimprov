@@ -7,6 +7,7 @@ import Image from "next/image"
 import { debounce } from "debounce"
 import CustomSpinner from "./spinner"
 import { useRouter } from "next/navigation"
+import Connecting from "./connecting"
 
 export default function ChatComponent({
   sessionId,
@@ -15,7 +16,7 @@ export default function ChatComponent({
   sessionId: string
   token: string
 }) {
-  console.log("ChatCompRendered-SessionId::", sessionId)
+  process.env.NODE_ENV === "development" && console.log("ChatCompRendered-SessionId::", sessionId)
   const [adminConnected, setAdminConnected] = useState(false)
 
   const [sentText, sentSentText] = useState<string>()
@@ -174,13 +175,6 @@ export default function ChatComponent({
       </div>
     </>
   ) : (
-    <div className="flex justify-center pt-64">
-      <div className="grid grid-cols">
-        <CustomSpinner className="flex justify-center" />
-        <div className="flex justify-center px-4 pt-6">
-          Connecting. This can take a minute
-        </div>
-      </div>
-    </div>
+    <Connecting />
   )
 }
