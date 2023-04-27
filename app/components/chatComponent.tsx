@@ -6,6 +6,7 @@ import { Session } from "@opentok/client"
 import Image from "next/image"
 import { debounce } from "debounce"
 import CustomSpinner from "./spinner"
+import { useRouter } from "next/navigation"
 
 export default function ChatComponent({
   sessionId,
@@ -24,6 +25,8 @@ export default function ChatComponent({
 
   const mobileRef = useRef<HTMLInputElement>(null)
   const desktopRef = useRef<HTMLTextAreaElement>(null)
+
+  const router = useRouter()
 
   const messageDebounced = debounce(async () => {
     if (!session) return
@@ -74,6 +77,7 @@ export default function ChatComponent({
     })
     session.on("connectionDestroyed", () => {
       console.log("connection destroyed")
+      router.push('/')
     })
     session.on("signal", (event) => {
       console.log("signal???", event)
@@ -85,9 +89,9 @@ export default function ChatComponent({
 
   const DesktopComponent = () => {
     return (
-      <div className="h-96">
-        <div className="w-96">
-        <div className="flex justify-center pt-10 ">
+      <div className="flex justify-center w-screen">
+        <div className="">
+        <div className="pt-10 ">
           <div className="relative w-80 h-80">
             <Image
               src="/cafe_eating_dark.jpg"
@@ -95,7 +99,7 @@ export default function ChatComponent({
               alt="guy eating at cafe"
               className="flex items-center justify-center border border-black"
             />
-            <div className="p-2 z-1 text-lg text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
+            <div className="p-2 z-1 text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
               {/* Hey hows it going, this is default tttt text, my name is geoff, lol that always gets a chuckle - my name is geoff. Im sitting here eating */}
               {receivedText}
             </div>
