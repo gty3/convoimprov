@@ -58,9 +58,9 @@ async function sendEmail(sessionId: string): Promise<{ MessageId: string }> {
         }
       })
     ), { cache: 'no store' }
-    return { MessageId: "success" }
+    return { MessageId: "success" + sessionId }
   } catch (err) {
     console.log('SES-ERR:::', err)
-    return { MessageId: "failure" }
+    return { MessageId: "failure" + sessionId }
   }
 }
