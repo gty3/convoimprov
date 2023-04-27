@@ -18,9 +18,9 @@ export default function ApproachCard() {
 
         <Link
           href="/chat"
-          className="px-5 py-4 transition-colors border border-transparent rounded-lg group hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
+          className="px-5 py-4 transition-colors bg-gray-100 border border-transparent border-gray-300 rounded-lg drop-shadow-md group hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
         >
-          <h2 className={` text-2xl font-semibold mb-4`}>Start with me </h2>
+          {/* <h2 className={` text-2xl font-semibold mb-4`}>Start with me </h2> */}
           <div>
         <div className="flex justify-center ">
           <Image
@@ -32,13 +32,13 @@ export default function ApproachCard() {
           />
         </div>
             <div className="flex justify-center">
-              <div className="max-w-3xl m-2 mt-4">
-                {`Approach as many times as you'd like.`}
-              </div>
+              {/* <div className="max-w-3xl m-2 mt-4">
+              </div> */}
             </div>
             <div className="flex justify-center">
               <div className="w-40">
-                <ProceedButton />
+                <div className="pt-3 text-lg font-bold">Talk to me</div>
+                <div>Text</div>
               </div>
             </div>
       </div>
