@@ -42,7 +42,7 @@ export default async function ChatPage() {
             }
           }
         })
-      )
+      ), { cache: 'no store' }
     } catch (err) {
       console.log('SES-ERR:::', err)
     }
