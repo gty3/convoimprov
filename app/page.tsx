@@ -34,8 +34,8 @@ export default function Home() {
       after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]"
       >
         <div className="relative text-4xl font-semibold lg:mt-20">
-          <div className="text-5xl font-bold">Become a conversationalist</div>
-          <div className="mt-4 text-2xl">Help others improve their conversation skills</div>
+          <div className="pl-4 text-4xl font-bold">Become a conversationalist</div>
+          <div className="pl-4 mt-4 text-2xl">Help others improve their conversation skills</div>
         </div>
       </div>
       <div className="grid mt-10 mb-32 text-center cursor-pointer grid-center">
