@@ -1,4 +1,3 @@
-
 import Link from "next/link"
 import ApproachCard from "./approachCard"
 
@@ -33,12 +32,24 @@ export default function Home() {
       before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 
       after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]"
       >
-        <div className="relative text-4xl font-semibold lg:mt-20">
-          <div className="pl-4 text-4xl font-bold">Become a conversationalist</div>
-          <div className="pl-4 mt-4 text-2xl">Help others improve their conversation skills</div>
+        <div className="relative lg:mt-20">
+          <div className="pl-4 text-4xl font-bold">
+            Become a conversationalist
+          </div>
+          <div className="pl-4 mt-4 text-2xl font-bold">
+            Help others improve their conversation skills
+          </div>
+          {/* <div className="mt-4 text-2xl ">Practice thinking out loud</div> */}
+          <div className="grid grid-cols-2 mt-6">
+            <div>
+              <div className="mt-4 text-2xl font-semibold">Text like you talk</div>
+              <div>Messages are sent as you write them</div>
+            </div>
+            {/* <div className="flex justify-center">col2</div> */}
+          </div>
         </div>
       </div>
-      <div className="grid mt-10 mb-32 text-center cursor-pointer grid-center">
+      <div className="grid grid-cols-3 mt-10 mb-32 text-center cursor-pointer grid-center">
         <ApproachCard />
       </div>
       {/* <EmailButton /> */}

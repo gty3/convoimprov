@@ -43,8 +43,6 @@ export default function ChatComponent({
         }
       )
     }
-
-
   }, 700)
 
   const handleTextChange = async (e: SyntheticEvent) => {
