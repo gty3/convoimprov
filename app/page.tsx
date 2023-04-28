@@ -21,9 +21,9 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center p-8 min-h-screen bg-[url(/grid.svg)]">
+    <main className=" min-h-screen bg-[url(/grid.svg)]">
       <div
-        className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] 
+        className="p-3 relative flex justify-center place-items-center before:absolute before:h-[300px] before:w-[480px] 
         before:-translate-x-1/2 before:rounded-full 
       before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-['']
        after:absolute after:-z-20 after:h-[180px] 
@@ -42,17 +42,25 @@ export default function Home() {
           {/* <div className="mt-4 text-2xl ">Practice thinking out loud</div> */}
           <div className="grid grid-cols-2 mt-6">
             <div>
-              <div className="mt-4 text-2xl font-semibold">Text like you talk</div>
+              <div className="mt-4 text-2xl font-semibold">
+                Text like you talk
+              </div>
               <div>Messages are sent as you write them</div>
             </div>
             {/* <div className="flex justify-center">col2</div> */}
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 mt-10 mb-32 text-center cursor-pointer grid-center">
-        <ApproachCard />
+      <div className="sm:flex sm:justify-center">
+        <div className="sm:w-96">
+          <div className="p-2 text-lg font-bold">Start a conversation:</div>
+          <div className="grid grid-cols-2 gap-4 p-4 text-center cursor-pointer md:mt-6 md:gap-10 max-w-64">
+            {/* <ApproachCard image="/cafe_eating.jpg" medium="Text"/> */}
+            <ApproachCard image="/blank_person.png" medium="Text" />
+            {/* <ApproachCard image="/blank_person.png" medium="Video" disabled={true} /> */}
+          </div>
+        </div>
       </div>
-      {/* <EmailButton /> */}
     </main>
   )
 }
