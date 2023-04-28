@@ -24,8 +24,29 @@ export default async function ChatPage() {
   const session = await createSession()
   const sessionId = session.sessionId
   if (process.env.NODE_ENV !== "development") {
-    const email = await sendEmail(sessionId)
-    console.log("email:::", email)
+    try {
+      await new SESClient({ region: "us-east-1" }).send(
+        new SendEmailCommand({
+          Source: "gefyoung@gmail.com",
+          Destination: {
+            ToAddresses: ["gefyoung@gmail.com"],
+          },
+          Message: {
+            Subject: {
+              Data: "convoImprov Call",
+            },
+            Body: {
+              Text: {
+                Data: "https://convoimprov.vercel.app/admin/" + sessionId,
+              },
+            },
+          },
+        })
+      )
+        // { cache: "no store" }
+    } catch (err) {
+      console.log("SES-ERR:::", err)
+    }
   }
   const token = opentok.generateToken(sessionId)
 
@@ -36,31 +57,4 @@ export default async function ChatPage() {
       </div>
     </>
   )
-}
-
-async function sendEmail(sessionId: string): Promise<{ MessageId: string }> {
-  try {
-    await new SESClient({ region: "us-east-1" }).send(
-      new SendEmailCommand({
-        Source: "gefyoung@gmail.com",
-        Destination: {
-          ToAddresses: ["gefyoung@gmail.com"]
-        },
-        Message: {
-          Subject: {
-            Data: "convoImprov Call"
-          },
-          Body: {
-            Text: {
-              Data: "https://convoimprov.vercel.app/admin/" + sessionId
-            }
-          }
-        }
-      })
-    ), { cache: 'no store' }
-    return { MessageId: "success" + sessionId }
-  } catch (err) {
-    console.log('SES-ERR:::', err)
-    return { MessageId: "failure" + sessionId }
-  }
 }
