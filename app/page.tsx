@@ -5,7 +5,7 @@ import SpringText from "./landingPage/textLikeYouTalk"
 import ExerciseYourSocialSkills from "./landingPage/exerciseYourSocialSkills"
 import TextLikeYouTalk from "./landingPage/textLikeYouTalk"
 import StartAConversation from "./landingPage/startAConversation"
-import BuildTheConfidence from "./landingPage/buildTheConfidence"
+import BuildConfidence from "./landingPage/buildConfidence"
 
 export default function Home() {
   const EmailButton = () => {
@@ -40,17 +40,13 @@ export default function Home() {
       >
         <div className="relative lg:mt-20">
           <div className="pl-4 text-4xl font-bold">Know what to say</div>
-          {/* <div className="pl-4 mt-4 text-2xl font-bold">
-            Practice Conversation
-          </div> */}
-          {/* <div className="mt-4 text-2xl ">Practice thinking out loud</div> */}
+
           <ExerciseYourSocialSkills />
-          <TextLikeYouTalk />
         </div>
       </div>
+      <BuildConfidence />
       <StartAConversation />
-      <ExerciseYourSocialSkills />
-      <BuildTheConfidence />
+      {/* <TextLikeYouTalk /> */}
     </main>
   )
 }
