@@ -1,5 +1,11 @@
 import Link from "next/link"
-import ApproachCard from "./approachCard"
+import ApproachCard from "./landingPage/startAConversation"
+import { useSpring, animated } from "@react-spring/web"
+import SpringText from "./landingPage/textLikeYouTalk"
+import ExerciseYourSocialSkills from "./landingPage/exerciseYourSocialSkills"
+import TextLikeYouTalk from "./landingPage/textLikeYouTalk"
+import StartAConversation from "./landingPage/startAConversation"
+import BuildTheConfidence from "./landingPage/buildTheConfidence"
 
 export default function Home() {
   const EmailButton = () => {
@@ -33,34 +39,18 @@ export default function Home() {
       after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]"
       >
         <div className="relative lg:mt-20">
-          <div className="pl-4 text-4xl font-bold">
-            Become a conversationalist
-          </div>
-          <div className="pl-4 mt-4 text-2xl font-bold">
-            Help others improve their conversation skills
-          </div>
+          <div className="pl-4 text-4xl font-bold">Know what to say</div>
+          {/* <div className="pl-4 mt-4 text-2xl font-bold">
+            Practice Conversation
+          </div> */}
           {/* <div className="mt-4 text-2xl ">Practice thinking out loud</div> */}
-          <div className="grid grid-cols-2 mt-6">
-            <div>
-              <div className="mt-4 text-2xl font-semibold">
-                Text like you talk
-              </div>
-              <div>Messages are sent as you write them</div>
-            </div>
-            {/* <div className="flex justify-center">col2</div> */}
-          </div>
+          <ExerciseYourSocialSkills />
+          <TextLikeYouTalk />
         </div>
       </div>
-      <div className="sm:flex sm:justify-center">
-        <div className="sm:w-96">
-          <div className="p-2 text-lg font-bold">Start a conversation:</div>
-          <div className="grid grid-cols-2 gap-4 p-4 text-center cursor-pointer md:mt-6 md:gap-10 max-w-64">
-            {/* <ApproachCard image="/cafe_eating.jpg" medium="Text"/> */}
-            <ApproachCard image="/blank_person.png" medium="Text" />
-            {/* <ApproachCard image="/blank_person.png" medium="Video" disabled={true} /> */}
-          </div>
-        </div>
-      </div>
+      <StartAConversation />
+      <ExerciseYourSocialSkills />
+      <BuildTheConfidence />
     </main>
   )
 }

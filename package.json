@@ -11,6 +11,7 @@
   "dependencies": {
     "@aws-sdk/client-ses": "^3.319.0",
     "@opentok/client": "^2.25.0",
+    "@react-spring/web": "^9.7.2",
     "@types/node": "18.15.11",
     "@types/opentok": "^2.14.0",
     "@types/react": "18.0.35",
