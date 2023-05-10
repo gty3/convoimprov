@@ -3,6 +3,11 @@ import Image from "next/image"
 import { useSpring, useTransition, animated } from "@react-spring/web"
 
 export default function BuildConfidence() {
+
+  const convo = [
+
+  ]
+  
   return (
     <div className="flex justify-center m-2 mt-8 sm:mt-16">
       <div className="h-52 w-[36rem]">
@@ -10,8 +15,9 @@ export default function BuildConfidence() {
           Build confidence and get past small talk
         </div> */}
         <div className="grid grid-cols-2">
-          <div className="relative w-40 h-40 border border-black rounded-lg">
+          <div className="relative w-40 h-40 ">
             <Image
+            className="border border-black rounded-lg"
               src="/dylan_christchurch.jpg"
               fill={true}
               alt="Dylan Christchurch"

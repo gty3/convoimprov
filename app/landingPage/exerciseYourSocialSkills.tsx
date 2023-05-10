@@ -2,31 +2,34 @@
 
 import Image from "next/image"
 import { useSpring, useTransition, animated } from "@react-spring/web"
+import { useState } from "react"
 
 export default function exerciseYourSocialSkills() {
+  const [index, setIndex] = useState(0)
+
   const convo = [
     "Where is that?",
     "Byron Bay Australia",
     "Oh, I've never been to Australia",
-    "typically I would respond - you should go",
+    "I'd say you should go",
     "but if you don't have anything to add about australia, the conversation might go flat",
-    "maybe remark on where you are from?",
+    "Where you are from?",
   ]
 
-  // const transitions = useTransition(index, {
-  //   from: { opacity: 0 },
-  //   enter: { opacity: 1 },
-  //   leave: { opacity: 0 },
-  //   config: { duration: 500 },
-  //   onRest: (result, spring, item) => {
-  //     if (index === item) {
-  //       setIndex((prev) => (prev + 1) % convo.length)
-  //     }
-  //     // setIndex(index === convo.length - 1 ? 0 : index + 1)
-  //   },
-  //   exitBeforeEnter: true,
-  //   delay: 500
-  // })
+  const transitions = useTransition(index, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 500 },
+    onRest: (result, spring, item) => {
+      if (index === item) {
+        setIndex((prev) => (prev + 1) % convo.length)
+      }
+      // setIndex(index === convo.length - 1 ? 0 : index + 1)
+    },
+    exitBeforeEnter: true,
+    delay: 500
+  })
 
   return (
     <div className="flex justify-center mt-10 sm:mt-20 h-52">
@@ -38,8 +41,8 @@ export default function exerciseYourSocialSkills() {
           <div>Talk with someone who wants to talk</div>
         </div>
         <div>
-          <div className="relative w-40 h-40 border border-black rounded-lg">
-            <Image src="/cafe_eating.jpg" fill={true} alt="cafe eating" />
+          <div className="relative w-40 h-40">
+            <Image src="/cafe_eating.jpg" fill={true} alt="cafe eating" className="border border-black rounded-lg"/>
             <animated.div className="p-1 z-1 sm:text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
               Byron Bay Australia
             </animated.div>
