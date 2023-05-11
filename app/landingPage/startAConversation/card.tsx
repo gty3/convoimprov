@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export default function Card({
   image,
@@ -11,14 +12,15 @@ export default function Card({
   disabled?: boolean
 }) {
   return (
-    <>
-      <Link
-        href="/chat"
-        className={`sm:w-40 sm:px-5 sm:py-4 px-2 py-3 sm:m-4 mx-2 transition-colors bg-gray-100 border border-transparent
-             border-gray-300 rounded-lg drop-shadow-md group hover:dark:border-neutral-700
-              hover:dark:bg-neutral-800 hover:dark:bg-opacity-30`}
-      >
-        <div>
+    <motion.button
+      className={`sm:w-40 sm:px-5 sm:py-4 px-2 py-3 sm:m-4 mx-2 transition-colors bg-gray-100 border border-transparent
+    border-gray-300 rounded-lg drop-shadow-md group hover:dark:border-neutral-700
+     hover:dark:bg-neutral-800 hover:dark:bg-opacity-30`}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+    >
+      <Link href="/chat">
+        <motion.div whileTap={{scale: 0.9}}>
           Random
           <div className="flex justify-center ">
             <Image
@@ -34,8 +36,8 @@ export default function Card({
               <div className="pt-3 text-lg font-bold">{medium}</div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </Link>
-    </>
+    </motion.button>
   )
 }
