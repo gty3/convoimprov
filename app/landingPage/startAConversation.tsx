@@ -7,23 +7,18 @@ import { AnimatePresence, motion } from "framer-motion"
 import LoadingBalls from "./startAConversation/loadingBalls"
 
 export default function StartAConversation() {
-  const [lookingState, setLookingState] = useState(false)
+  const [lookingState, setLookingState] = useState<string | null>(null)
 
   const timerRef = useRef<any>()
 
   const router = useRouter()
 
-  timerRef.current = (session: string) => {
-    setTimeout(() => {
-      console.log(session)
-      // router.push(`/chat/${session}`)
-    }, 1000)
-  }
+
 
   const startClicked = async () => {
-    setLookingState(true)
+    setLookingState("looking")
     try {
-      const fetchAdmin = await fetch("/api/fetchAdmin",{
+      const fetchAdmin = await fetch("/api/fetchAdmin", {
         method: "POST",
       })
       const res = await fetchAdmin.json()
@@ -35,31 +30,35 @@ export default function StartAConversation() {
         process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
         sessionId
       )
-      // console.log("otSession::", otSession)
+
       otSession.connect(token, function (err) {
         if (err) {
           console.log("session-connect-error:::", err)
         }
       })
+
       otSession.on("connectionCreated", (event) => {
-        // console.log("CONNECTION!!!@@@@@@@")
-        // router.push(`/chat/${sessionId}`)
         const eventConnectionId = event.connection.connectionId
         const thisConnectionId = otSession.connection?.connectionId
         if (eventConnectionId !== thisConnectionId) {
           router.push(`/chat/${sessionId}`)
         }
       })
-
-      // timerRef.current(sessionId)
+      timerRef.current = setTimeout(() => {
+        setLookingState("nobody")
+      }, 10000)
     } catch (err) {
       console.log("err:", err)
     }
   }
+
   const closeLooking = async () => {
     // clearTimeout(timerRef.current)
-    setLookingState(false)
-    const lookingCanceled = await fetch("/api/lookingCanceled", { method: "POST" })
+    setLookingState(null)
+    const lookingCanceled = await fetch("/api/lookingCanceled", {
+      method: "POST",
+    })
+    clearTimeout(timerRef.current)
   }
 
   return (
@@ -91,7 +90,7 @@ export default function StartAConversation() {
         </div>
       </div>
       <AnimatePresence>
-        {lookingState && (
+        {lookingState === "looking" ? (
           <>
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -120,7 +119,34 @@ export default function StartAConversation() {
               </div>
             </motion.div>
           </>
-        )}
+        ) : lookingState === "nobody" ? (
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 20 }}
+              transition={{ duration: 0.2 }}
+              className="sticky pb-3 mx-2 mt-2 bg-gray-200 rounded-md bottom-4"
+              exit={{ opacity: 0, y: 40 }}
+            >
+              <div className="flex justify-center py-2">
+                <div className="px-1 mt-1 mr-4 font-bold">There is currently no one available</div>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-8 h-8 pt-1 text-center bg-gray-300 rounded-full cursor-pointer hover:bg-gray-400"
+                  onClick={() => closeLooking()}
+                >
+                  X
+                </motion.div>
+              </div>
+              <div className="flex flex-col">
+                <span className="mt-2 text-center ">
+                  Want to recieve requests for conversation? Message me <a className="ml-0.5 text-blue-600" href="reddit.com/user/gty_">reddit.com/user/gty_</a>
+                </span>
+              </div>
+            </motion.div>
+          </>
+        ) : null}
       </AnimatePresence>
     </>
   )
