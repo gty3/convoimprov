@@ -4,6 +4,8 @@ export async function POST(request: Request) {
 
   console.log("NODE ENV:::", process.env.NODE_ENV)
 
+  const requestBody = await request.json()
+
   if (process.env.NODE_ENV !== "development") {
     try {
       await new SESClient({ region: "us-east-1" }).send(
@@ -18,7 +20,7 @@ export async function POST(request: Request) {
             },
             Body: {
               Text: {
-                Data: "looking-for canceled," + request.body,
+                Data: "looking-for canceled," + requestBody,
               },
             },
           },
