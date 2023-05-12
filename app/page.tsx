@@ -1,6 +1,5 @@
 import Link from "next/link"
 import ApproachCard from "./landingPage/startAConversation"
-import { useSpring, animated } from "@react-spring/web"
 import SpringText from "./landingPage/textLikeYouTalk"
 import ExerciseYourSocialSkills from "./landingPage/exerciseYourSocialSkills"
 import TextLikeYouTalk from "./landingPage/textLikeYouTalk"

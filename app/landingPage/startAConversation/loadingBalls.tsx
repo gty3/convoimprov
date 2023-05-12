@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { Transition, motion } from "framer-motion"
 
 const LoadingBalls = () => {
   const loadingContainerVariants = {
@@ -21,7 +21,7 @@ const LoadingBalls = () => {
       y: "100%",
     },
   }
-  const loadingCircleTransition = {
+  const loadingCircleTransition: Transition = {
     duration: 0.8,
     repeat: Infinity,
     repeatType: "reverse",

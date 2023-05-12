@@ -1,6 +1,5 @@
 "use client"
 import Image from "next/image"
-import { useSpring, useTransition, animated } from "@react-spring/web"
 
 export default function BuildConfidence() {
 
@@ -22,7 +21,7 @@ export default function BuildConfidence() {
               fill={true}
               alt="Dylan Christchurch"
             />
-            <animated.div className="p-1 z-1 sm:text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]"></animated.div>
+            <div className="p-1 z-1 sm:text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]"></div>
           </div>
           <div className="text-xl font-bold sm:text-2xl">
           Build confidence and get past small talk

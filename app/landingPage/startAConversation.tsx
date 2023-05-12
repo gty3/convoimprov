@@ -3,14 +3,12 @@
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
-import useMeasure from "react-use-measure"
 import { AnimatePresence, motion } from "framer-motion"
 import LoadingBalls from "./startAConversation/loadingBalls"
 
 export default function StartAConversation() {
   const [lookingState, setLookingState] = useState(false)
 
-  const [ref, { width }] = useMeasure()
 
   const timerRef = useRef<any>()
 
