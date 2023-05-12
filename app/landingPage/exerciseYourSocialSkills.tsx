@@ -24,14 +24,14 @@ export default function exerciseYourSocialSkills() {
         <div>
           <div className="relative w-40 h-40">
             <Image src="/cafe_eating.jpg" fill={true} alt="cafe eating" className="border border-black rounded-lg"/>
-            <div className="p-1 z-1 sm:text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
+            {/* <div className="p-1 z-1 sm:text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]">
               Byron Bay Australia
-            </div>
+            </div> */}
           </div>
 
-          <div className="bg-gray-100 w-[160px] px-2 rounded-lg my-1 py-0.5">
+          {/* <div className="bg-gray-100 w-[160px] px-2 rounded-lg my-1 py-0.5">
             Where is that?
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

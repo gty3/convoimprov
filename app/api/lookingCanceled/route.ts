@@ -1,6 +1,6 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses"
 
-export async function POST() {
+export async function POST(request: Request) {
 
   console.log("NODE ENV:::", process.env.NODE_ENV)
 
@@ -18,7 +18,7 @@ export async function POST() {
             },
             Body: {
               Text: {
-                Data: "looking-for canceled",
+                Data: "looking-for canceled," + request.body,
               },
             },
           },

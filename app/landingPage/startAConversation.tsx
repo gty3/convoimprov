@@ -52,11 +52,12 @@ export default function StartAConversation() {
     }
   }
 
-  const closeLooking = async () => {
+  const closeLooking = async (closedWhenNobody: Boolean) => {
     // clearTimeout(timerRef.current)
     setLookingState(null)
     const lookingCanceled = await fetch("/api/lookingCanceled", {
       method: "POST",
+      body: closedWhenNobody ? "Closed after 'no one is available'" : "",
     })
     clearTimeout(timerRef.current)
   }
@@ -107,7 +108,7 @@ export default function StartAConversation() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="w-8 h-8 pt-1 text-center bg-gray-300 rounded-full cursor-pointer hover:bg-gray-400"
-                  onClick={() => closeLooking()}
+                  onClick={() => closeLooking(false)}
                 >
                   X
                 </motion.div>
@@ -134,7 +135,7 @@ export default function StartAConversation() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="w-8 h-8 pt-1 text-center bg-gray-300 rounded-full cursor-pointer hover:bg-gray-400"
-                  onClick={() => closeLooking()}
+                  onClick={() => closeLooking(true)}
                 >
                   X
                 </motion.div>
