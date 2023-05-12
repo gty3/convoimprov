@@ -32,7 +32,7 @@ export async function GET() {
 
   if (process.env.NODE_ENV !== "development") {
     try {
-      emailres = await new SESClient({ region: "us-east-1" }).send(
+      emailRes = await new SESClient({ region: "us-east-1" }).send(
         new SendEmailCommand({
           Source: "gefyoung@gmail.com",
           Destination: {
