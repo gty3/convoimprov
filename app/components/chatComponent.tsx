@@ -16,25 +16,22 @@ export default function ChatComponent({
   sessionId: string
   token: string
 }) {
-  process.env.NODE_ENV === "development" &&
-    console.log("ChatCompRendered-SessionId::", sessionId)
-  const [adminConnected, setAdminConnected] = useState(false)
+  // const [adminConnected, setAdminConnected] = useState(false)
 
-  const [sentText, sentSentText] = useState<string>()
+  const [sentText, setSentText] = useState<string>()
   const [receivedText, setReceivedText] = useState<string>()
 
   const [session, setSession] = useState<Session>()
 
-  const mobileRef = useRef<HTMLInputElement>(null)
-  const desktopRef = useRef<HTMLTextAreaElement>(null)
+  const textRef = useRef<HTMLInputElement>(null)
 
   const router = useRouter()
 
   const messageDebounced = debounce(async () => {
     if (!session) return
-    if (mobileRef.current || desktopRef.current) {
-      const textInput = mobileRef.current?.value || desktopRef.current?.value
-      sentSentText(textInput)
+    if (textRef.current) {
+      const textInput = textRef.current.value
+      setSentText(textInput)
       session.signal(
         { type: "signal", data: "" + textInput },
         function signalCallback(err) {
@@ -43,6 +40,7 @@ export default function ChatComponent({
           }
         }
       )
+      textRef.current.value = ""
     }
   }, 700)
 
@@ -68,13 +66,13 @@ export default function ChatComponent({
         console.log("session-connect-error:::", err)
       }
     })
-    session.on("connectionCreated", (event) => {
-      const eventConnectionId = event.connection.connectionId
-      const thisConnectionId = session.connection?.connectionId
-      if (eventConnectionId !== thisConnectionId) {
-        setAdminConnected(true)
-      }
-    })
+    // session.on("connectionCreated", (event) => {
+    //   const eventConnectionId = event.connection.connectionId
+    //   const thisConnectionId = session.connection?.connectionId
+    //   if (eventConnectionId !== thisConnectionId) {
+    //     setAdminConnected(true)
+    //   }
+    // })
     session.on("connectionDestroyed", () => {
       console.log("connection destroyed")
       router.push("/")
@@ -117,7 +115,7 @@ export default function ChatComponent({
             autoComplete="off"
             className="px-2 py-1 border-2 border-black rounded-lg w-80 dark:text-black"
             onChange={(e) => handleTextChange(e)}
-            ref={mobileRef}
+            ref={textRef}
           />
         </div>
       </div>
