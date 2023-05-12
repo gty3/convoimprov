@@ -1,6 +1,6 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses"
 
-export async function GET(request: Request) {
+export async function POST() {
 
   console.log("NODE ENV:::", process.env.NODE_ENV)
 

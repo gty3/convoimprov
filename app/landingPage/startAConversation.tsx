@@ -23,7 +23,9 @@ export default function StartAConversation() {
   const startClicked = async () => {
     setLookingState(true)
     try {
-      const fetchAdmin = await fetch("/api/fetchAdmin")
+      const fetchAdmin = await fetch("/api/fetchAdmin",{
+        method: "POST",
+      })
       const res = await fetchAdmin.json()
       const { sessionId, token } = res
       console.log("res:", res)
@@ -57,7 +59,7 @@ export default function StartAConversation() {
   const closeLooking = async () => {
     // clearTimeout(timerRef.current)
     setLookingState(false)
-    const lookingCanceled = await fetch("/api/lookingCanceled")
+    const lookingCanceled = await fetch("/api/lookingCanceled", { method: "POST" })
   }
 
   return (
