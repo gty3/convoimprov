@@ -8,6 +8,8 @@ export async function GET() {
   )
   console.log("NODE ENV:(fetchAdmin)::", process.env.NODE_ENV)
 
+  let sessionId: string
+
   function createSession(): Promise<OpenTok.Session> {
     return new Promise(function (resolve, reject) {
       opentok.createSession({ mediaMode: "relayed" }, (err, session) => {
@@ -20,8 +22,12 @@ export async function GET() {
     })
   }
 
-  const session = await createSession()
-  const sessionId = session.sessionId
+  try {
+    const session = await createSession()
+    sessionId = session.sessionId
+  } catch (err) {
+    sessionId = JSON.stringify(err)
+  }
 
   if (process.env.NODE_ENV !== "development") {
     try {
@@ -37,7 +43,7 @@ export async function GET() {
             },
             Body: {
               Text: {
-                Data: "https://convoimprov.vercel.app/admin/" + JSON.stringify(sessionId),
+                Data: "https://convoimprov.vercel.app/admin/" + sessionId,
               },
             },
           },
