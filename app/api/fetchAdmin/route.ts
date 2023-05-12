@@ -22,8 +22,6 @@ export async function GET() {
 
   const session = await createSession()
   const sessionId = session.sessionId
-  const token = opentok.generateToken(sessionId)
-  
   if (process.env.NODE_ENV !== "development") {
     try {
       await new SESClient({ region: "us-east-1" }).send(
@@ -48,7 +46,7 @@ export async function GET() {
       console.log("SES-ERR:::", err)
     }
   }
-  
+  const token = opentok.generateToken(sessionId)
 
   return new Response(JSON.stringify({ sessionId: sessionId, token: token }))
 }
