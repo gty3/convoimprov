@@ -23,9 +23,29 @@ export default function StartAConversation() {
 
   const startClicked = async () => {
     setLookingState(true)
-    // const fetchAdmin = await fetch("/api/fetchAdmin")
-    // const res = await fetchAdmin.json()
-    // const { sessionId } = res
+    const fetchAdmin = await fetch("/api/fetchAdmin")
+    const res = await fetchAdmin.json()
+    const { sessionId, token } = res
+
+    const OT = (await import("@opentok/client")).default
+      const otSession = OT.initSession(
+        process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
+        sessionId
+      )
+
+      // otSession.connect(token, function (err) {
+      //   if (err) {
+      //     console.log("session-connect-error:::", err)
+      //   }
+      // })
+      otSession.on("connectionCreated", (event) => {
+        router.push(`/chat/${sessionId}`)
+        // const eventConnectionId = event.connection.connectionId
+        // const thisConnectionId = otSession.connection?.connectionId
+        // if (eventConnectionId !== thisConnectionId) {
+        //   router.push(`/chat/${sessionId}`)
+        // }
+      })
 
     // timerRef.current(sessionId)
   }
