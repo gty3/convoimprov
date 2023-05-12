@@ -1,7 +1,7 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses"
 import OpenTok from "opentok"
 
-export async function GET(request: Request) {
+export async function POST() {
   const opentok = new OpenTok(
     process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
     process.env.OPENTOK_SECRET

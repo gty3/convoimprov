@@ -23,9 +23,7 @@ export default function StartAConversation() {
   const startClicked = async () => {
     setLookingState(true)
     try {
-      const fetchAdmin = await fetch("/api/fetchAdmin", {
-        next: { revalidate: 0 },
-      })
+      const fetchAdmin = await fetch("/api/fetchAdmin")
       const res = await fetchAdmin.json()
       const { sessionId, token } = res
       console.log("res:", res)
