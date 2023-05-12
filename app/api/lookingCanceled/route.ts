@@ -29,5 +29,5 @@ export async function GET() {
     }
   }
 
-  // return new Response(JSON.stringify({ sessionId: sessionId, token: token }))
+  // return new Response(JSON.stringify({ statusCode: 200 }))
 }
