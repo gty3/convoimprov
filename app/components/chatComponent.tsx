@@ -85,6 +85,7 @@ export default function ChatComponent({
         setReceivedText(event.data)
       }
     })
+    return () => { session.disconnect() }
   }, [session, token])
 
   return (
