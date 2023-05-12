@@ -6,7 +6,6 @@ export async function GET() {
     process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
     process.env.OPENTOK_SECRET
   )
-  console.log("NODE ENV:(fetchAdmin)::", process.env.NODE_ENV)
 
   let sessionId: string
   let emailRes: any
@@ -44,7 +43,7 @@ export async function GET() {
             },
             Body: {
               Text: {
-                Data: "https://convoimprov.vercel.app/admin/",
+                Data: "https://convoimprov.vercel.app/admin/" + sessionId,
               },
             },
           },
@@ -57,6 +56,6 @@ export async function GET() {
   const token = opentok.generateToken(sessionId)
 
   return new Response(
-    JSON.stringify({ sessionId: sessionId, token: token, emailRes: emailRes })
+    JSON.stringify({ sessionId: sessionId, token: token })
   )
 }
