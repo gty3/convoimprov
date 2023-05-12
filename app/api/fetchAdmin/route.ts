@@ -6,7 +6,7 @@ export async function GET() {
     process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
     process.env.OPENTOK_SECRET
   )
-  console.log("NODE ENV:::", process.env.NODE_ENV)
+  console.log("NODE ENV:(fetchAdmin)::", process.env.NODE_ENV)
 
   function createSession(): Promise<OpenTok.Session> {
     return new Promise(function (resolve, reject) {

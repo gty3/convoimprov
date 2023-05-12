@@ -29,26 +29,26 @@ export default function StartAConversation() {
       const { sessionId, token } = res
       console.log('res:', res)
   
-      const OT = (await import("@opentok/client")).default
-        const otSession = OT.initSession(
-          process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
-          sessionId
-        )
-        // console.log("otSession::", otSession)
-        otSession.connect(token, function (err) {
-          if (err) {
-            console.log("session-connect-error:::", err)
-          }
-        })
-        otSession.on("connectionCreated", (event) => {
-          // console.log("CONNECTION!!!@@@@@@@")
-          // router.push(`/chat/${sessionId}`)
-          const eventConnectionId = event.connection.connectionId
-          const thisConnectionId = otSession.connection?.connectionId
-          if (eventConnectionId !== thisConnectionId) {
-            router.push(`/chat/${sessionId}`)
-          }
-        })
+      // const OT = (await import("@opentok/client")).default
+      //   const otSession = OT.initSession(
+      //     process.env.NEXT_PUBLIC_OPENTOK_APIKEY,
+      //     sessionId
+      //   )
+      //   // console.log("otSession::", otSession)
+      //   otSession.connect(token, function (err) {
+      //     if (err) {
+      //       console.log("session-connect-error:::", err)
+      //     }
+      //   })
+      //   otSession.on("connectionCreated", (event) => {
+      //     // console.log("CONNECTION!!!@@@@@@@")
+      //     // router.push(`/chat/${sessionId}`)
+      //     const eventConnectionId = event.connection.connectionId
+      //     const thisConnectionId = otSession.connection?.connectionId
+      //     if (eventConnectionId !== thisConnectionId) {
+      //       router.push(`/chat/${sessionId}`)
+      //     }
+      //   })
   
       // timerRef.current(sessionId)
     } catch (err) {
