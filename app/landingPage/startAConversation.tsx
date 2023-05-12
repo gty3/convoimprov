@@ -24,7 +24,7 @@ export default function StartAConversation() {
   const startClicked = async () => {
     setLookingState(true)
     try {
-      const fetchAdmin = await fetch("/api/fetchAdmin")
+      const fetchAdmin = await fetch("/api/fetchAdmin", { cache: 'no-store'})
       const res = await fetchAdmin.json()
       const { sessionId, token } = res
       console.log('res:', res)
