@@ -57,7 +57,7 @@ export default function StartAConversation() {
     setLookingState(null)
     const lookingCanceled = await fetch("/api/lookingCanceled", {
       method: "POST",
-      body: closedWhenNobody ? "Closed after 'no one is available'" : "",
+      body: closedWhenNobody ? "Closed after 'no one is available'" : "during-search",
     })
     clearTimeout(timerRef.current)
   }
