@@ -9,6 +9,7 @@ export async function GET() {
   console.log("NODE ENV:(fetchAdmin)::", process.env.NODE_ENV)
 
   let sessionId: string
+  let emailRes: any
 
   function createSession(): Promise<OpenTok.Session> {
     return new Promise(function (resolve, reject) {
@@ -31,7 +32,7 @@ export async function GET() {
 
   if (process.env.NODE_ENV !== "development") {
     try {
-      await new SESClient({ region: "us-east-1" }).send(
+      emailres = await new SESClient({ region: "us-east-1" }).send(
         new SendEmailCommand({
           Source: "gefyoung@gmail.com",
           Destination: {
@@ -55,5 +56,7 @@ export async function GET() {
   }
   const token = opentok.generateToken(sessionId)
 
-  return new Response(JSON.stringify({ sessionId: sessionId, token: token }))
+  return new Response(
+    JSON.stringify({ sessionId: sessionId, token: token, emailRes: emailRes })
+  )
 }

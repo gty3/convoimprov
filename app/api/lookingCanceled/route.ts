@@ -29,5 +29,5 @@ export async function GET() {
     }
   }
 
-  // return new Response(JSON.stringify({ statusCode: 200 }))
+  return new Response(JSON.stringify({ statusCode: 200 }))
 }
