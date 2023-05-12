@@ -50,7 +50,7 @@ export default function StartAConversation() {
     // timerRef.current(sessionId)
   }
   const closeLooking = async () => {
-    clearTimeout(timerRef.current)
+    // clearTimeout(timerRef.current)
     setLookingState(false)
     const lookingCanceled = await fetch("/api/lookingCanceled")
   }
