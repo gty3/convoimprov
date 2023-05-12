@@ -43,7 +43,7 @@ export async function GET() {
             },
             Body: {
               Text: {
-                Data: "https://convoimprov.vercel.app/admin/" + sessionId,
+                Data: "https://convoimprov.vercel.app/admin/",
               },
             },
           },
