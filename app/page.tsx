@@ -38,7 +38,7 @@ export default function Home() {
       after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]"
       >
         <div className="relative lg:mt-20">
-          <div className="pl-4 text-4xl font-bold">Know what to say</div>
+          <div className="pl-4 text-4xl font-bold sm:text-6xl">Talk with someone</div>
 
           <ExerciseYourSocialSkills />
         </div>

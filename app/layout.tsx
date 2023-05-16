@@ -2,7 +2,7 @@ import "./globals.css"
 import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
-  title: "Know what to say",
+  title: "Talk with someone",
   description: "Become a master communicator by talking with strangers",
 }
 

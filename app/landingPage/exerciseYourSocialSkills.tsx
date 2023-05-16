@@ -14,12 +14,12 @@ export default function exerciseYourSocialSkills() {
 
   return (
     <div className="flex justify-center mt-10 sm:mt-20 h-52">
-      <div className="grid grid-cols-2 sm:space-x-8">
+      <div className="grid grid-cols-2 space-x-2 sm:space-x-8">
         <div>
           <div className="mt-4 text-2xl font-semibold">
-            Exercise your social skills
+            Improve your social skills
           </div>
-          <div>Talk with someone who wants to talk</div>
+          <div>Exercise your social skills by having conversations</div>
         </div>
         <div>
           <div className="relative w-40 h-40">

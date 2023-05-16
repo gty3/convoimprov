@@ -23,8 +23,11 @@ export default function BuildConfidence() {
             />
             <div className="p-1 z-1 sm:text-lg absolute bottom-0 text-white drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)]"></div>
           </div>
+          <div>
           <div className="text-xl font-bold sm:text-2xl">
           Build confidence and get past small talk
+          </div>
+          <div>Talk with someone who wants to talk</div>
           </div>
         </div>
       </div>

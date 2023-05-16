@@ -46,7 +46,7 @@ export default function StartAConversation() {
       })
       timerRef.current = setTimeout(() => {
         setLookingState("nobody")
-      }, 10000)
+      }, 14000)
     } catch (err) {
       console.log("err:", err)
     }
@@ -97,7 +97,7 @@ export default function StartAConversation() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 20 }}
               transition={{ duration: 0.2 }}
-              className="sticky pb-3 mx-2 mt-2 bg-gray-200 rounded-md bottom-4"
+              className="sticky pb-3 mx-2 mt-2 bg-gray-200 rounded-md shadow-md bottom-4"
               exit={{ opacity: 0, y: 40 }}
             >
               <div className="flex justify-center py-2">
@@ -114,6 +114,9 @@ export default function StartAConversation() {
                 </motion.div>
               </div>
               <div className="flex flex-col">
+              <div className="flex justify-center px-1 mt-1 mr-4 text-sm">
+                  This typically takes 10 seconds
+                </div>
                 <div className="flex justify-center mt-2">
                   <LoadingBalls />
                 </div>
